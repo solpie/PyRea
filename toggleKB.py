@@ -4,7 +4,7 @@ from reaper_python import *
 
 
 def printf(agr):
-    # RPR_ShowConsoleMsg(str(agr)+'\n')
+    RPR_ShowConsoleMsg(str(agr)+'\n')
     pass
 
 
@@ -31,7 +31,7 @@ if __name__ == '__main__':
     cmd(CMD_Unarmed_all)
     Trk_Select = RPR_GetSelectedTrack(0, 0)
     trkState, d, flag = RPR_GetTrackState(Trk_Select, 0)
-    isArmed = bool(flag & 64)
+    isArmed = flag & 64
     if isArmed:
         record_unarm(Trk_Select)
         cmd(CMD_Trk_Monitor_Off)
@@ -39,4 +39,4 @@ if __name__ == '__main__':
         record_arm(Trk_Select)
         cmd(CMD_Trk_Monitor_On)
     cmd(CMD_Show_KB)
-    printf(isArmed)
+    printf(flag)
