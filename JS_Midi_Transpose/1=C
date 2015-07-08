@@ -1,0 +1,7 @@
+desc:MIDI Linker.
+//Uses gmem[slider2] to link instances
+slider1:0<-64,64,1>Linker 1=C
+@init
+@slider
+  gmem["transpose"] = slider1;
+@block
